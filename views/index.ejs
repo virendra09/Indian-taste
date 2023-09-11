@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Taco Recipes</title>
+  <link rel="stylesheet" type="text/css" href="/styles/main.css">
+</head>
+
+<body>
+  <h1>Indian Taste</h1>
+
+
+  <form action="/recipe" method="POST" class="buttons
+  ">
+    <button type="submit" value="Dosa" name="choice"><img src="https://www.cookwithmanali.com/wp-content/uploads/2020/05/Masala-Dosa-500x500.jpg" alt="Dosa"></button>
+    <button type="submit" value="Samosa" name="choice"><img src="https://www.cookwithnabeela.com/wp-content/uploads/2023/06/AlooSamosa3.webp" alt="Samosa"></button>
+    <button type="submit" value="Paani-puri" name="choice"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5jRbrTsfwobABxW5F9-QBXrrPWiU7tnZ3z8r0zQwldQEZ6s5PLMGg71KAF8gqHK1cWYU&usqp=CAU" alt="Paani-puri"></button>
+  </form>
+  <div id="recipeContainer" class="hidden">
+    <%if (locals.recipe) {%>
+
+      <h2 id="recipeTitle">
+        <%= recipe.name %>
+      </h2>
+
+      <h3>Ingredients:</h3>
+      <ul id="ingredientsList">
+        <li>
+          <%= recipe.ingredients.protein.name %>, <%= recipe.ingredients.protein.preparation %>
+        </li>
+        <li>
+          <%= recipe.ingredients.salsa.name %>
+
+        </li>
+        <% recipe.ingredients.toppings.forEach((topping)=> { %>
+          <li>
+            <%= topping.name %>
+          </li>
+          <% }) %>
+      </ul>
+
+      <%} else {%>
+        <h2>Pick your favourite taco ingredient 👆</h2>
+        <%}%>
+  </div>
+</body>
+
+</html>
